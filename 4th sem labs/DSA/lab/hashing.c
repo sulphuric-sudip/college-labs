@@ -47,7 +47,11 @@ void linear_probe(int pos,int num){
  	for(i=0;i<n-1;i++){
  		printf("\nGive element to store:\n");
  		scanf("%d",&num);
- 		hashing(num);
+ 		if(search(num)==1){
+ 			printf("\n\tDUPLICATE DATA NOT ALLOWED\a");
+ 			i--;
+		}else
+ 			hashing(num);
  	}
  	printf("\n\n\tInsertion Finish");
  srch:

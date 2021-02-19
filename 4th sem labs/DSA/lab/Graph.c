@@ -6,7 +6,10 @@ struct Graph{
 	int E;
 	int Adj[10][10];
 };
-struct Graph *graphMatrix(){
+
+int i,visited[10];
+
+struct Graph *graphRepOfMatrix(){
 	int i,j,k;
 	struct Graph *G=(struct Graph *)malloc(sizeof(struct Graph));
 	if(!G){
@@ -27,10 +30,10 @@ struct Graph *graphMatrix(){
 		G->Adj[i-1][j-1]=1;
 		G->Adj[j-1][i-1]=1;
 	}
-	printf("Check point 5"); 
 	return G;
 }
-void printAdj(struct Graph *G){
+
+void printAdjMax(struct Graph *G){
 	int i,j;
 	printf("\nMatrix representation of graph is:\n");
 	for(i=0;i<G->V;i++){
@@ -40,10 +43,30 @@ void printAdj(struct Graph *G){
 		printf("\n");
 	}
 }
+
+void dfTraversal(struct Graph *G,int s){
+	int i;
+	visited[s]=1;
+	printf(" %d->",s+1);
+	for(i=0;i<G->V;i++){
+		if(G->Adj[s][i]==1&&visited[i]==0)
+			dfTraversal(G,i);
+	}
+	
+}
+
 int main(){
 	struct Graph *G=NULL;
-	G = graphMatrix();
-	printAdj(G);
-	printf("Check point 6");
+	G = graphRepOfMatrix();
+	printAdjMax(G);
+	int i;
+	for(i=0;i<G->V;i++){
+		visited[i]=0;
+	}
+	printf("\nGive Source Vertex to traverse: ");
+	scanf("%d",&i);
+	printf("\n\tDEpth First Traversal is : \n\t");
+	dfTraversal(G,i-1);
+	getch();
 	return 0;
 }

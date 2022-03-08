@@ -1,6 +1,7 @@
 /*
 	Computer graphics simple animation project.
-	
+	Sudip Neupane
+	SEC075BCT016
 	--> BALLING
 	--> HIT BY BAT
 	--> BALL TO BOUNDRY 
